@@ -2,7 +2,6 @@
 
 namespace PalPalani\BayLinks;
 
-use PalPalani\BayLinks\Commands\BayLinksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
