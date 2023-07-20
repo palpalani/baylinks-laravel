@@ -34,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PalPalani\\BayLinks\\": "src/",
-            "PalPalani\\BayLinks\\Database\\Factories\\": "database/factories/"
+            "PalPalani\\BayLinks\\": "src/"
         }
     },
     "autoload-dev": {
