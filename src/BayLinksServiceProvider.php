@@ -17,9 +17,6 @@ class BayLinksServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('baylinks-laravel')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_baylinks-laravel_table')
-            ->hasCommand(BayLinksCommand::class);
+            ->hasConfigFile();
     }
 }
