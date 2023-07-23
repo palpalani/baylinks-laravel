@@ -13,6 +13,11 @@
             "name": "palPalani",
             "email": "palani.p@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "Prasanth",
+            "email": "prasanth.s@targetbay.com",
+            "role": "Developer"
         }
     ],
     "require": {
