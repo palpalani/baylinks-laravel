@@ -12,6 +12,7 @@ final class AccountResource extends Resource
      */
     public function get(): mixed
     {
+        dd("D");
         return $this->connector->send(new GetAccountRequest())->dto();
     }
 }

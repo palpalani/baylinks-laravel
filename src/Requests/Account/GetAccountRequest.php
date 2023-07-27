@@ -22,7 +22,7 @@ final class GetAccountRequest extends Request
     {
         return '/account';
     }
-
+/* 
     protected function defaultHeaders(): array
     {
         return [
@@ -31,7 +31,7 @@ final class GetAccountRequest extends Request
             'Api-Key' => config('baylinks-laravel.api.key'),
             'Api-Secret' => config('baylinks-laravel.api.secret'),
         ];
-    }
+    } */
 
     public function createDtoFromResponse(Response $response): Account
     {
