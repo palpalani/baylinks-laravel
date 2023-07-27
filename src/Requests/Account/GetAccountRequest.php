@@ -22,16 +22,16 @@ final class GetAccountRequest extends Request
     {
         return '/account';
     }
-/* 
-    protected function defaultHeaders(): array
-    {
-        return [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-            'Api-Key' => config('baylinks-laravel.api.key'),
-            'Api-Secret' => config('baylinks-laravel.api.secret'),
-        ];
-    } */
+    /*
+        protected function defaultHeaders(): array
+        {
+            return [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                'Api-Key' => config('baylinks-laravel.api.key'),
+                'Api-Secret' => config('baylinks-laravel.api.secret'),
+            ];
+        } */
 
     public function createDtoFromResponse(Response $response): Account
     {
