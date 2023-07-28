@@ -4,9 +4,9 @@ namespace PalPalani\BayLinks;
 
 final class BayLinks
 {
-    public static function client(string $apiVersion = 'v1'): Factory
+    public static function client(): Factory
     {
-        return self::factory()->withApiVersion($apiVersion);
+        return self::factory();
     }
 
     public static function factory(): Factory

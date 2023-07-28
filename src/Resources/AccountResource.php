@@ -10,8 +10,8 @@ final class AccountResource extends Resource
     /**
      * @return mixed|Account
      */
-    public function get(string $country): mixed
+    public function get(): mixed
     {
-        return $this->connector->send(new GetAccountRequest($country))->dto();
+        return $this->connector->send(new GetAccountRequest())->dto();
     }
 }

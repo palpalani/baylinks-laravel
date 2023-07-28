@@ -9,14 +9,12 @@ use Saloon\Http\Connector;
 
 final class Factory extends Connector
 {
-    public string $apiVersion = 'v1';
-
     /**
      * Resolve the base URL of the service.
      */
     public function resolveBaseUrl(): string
     {
-        return "https://api-colombia.com/api/{$this->apiVersion}";
+        return config('baylinks-laravel.server') . '/' . config('baylinks-laravel.api.url');
     }
 
     /**
@@ -32,14 +30,7 @@ final class Factory extends Connector
         ];
     }
 
-    public function withApiVersion(string $apiVersion): self
-    {
-        $this->apiVersion = $apiVersion;
-
-        return $this;
-    }
-
-    public function countries(): AccountResource
+    public function accountDetails(): AccountResource
     {
         return new AccountResource($this);
     }

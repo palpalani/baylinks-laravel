@@ -15,17 +15,12 @@ final class GetAccountRequest extends Request
 
     protected Method $method = Method::GET;
 
-    public function __construct(protected string $country)
-    {
-
-    }
-
     /**
      * {@inheritDoc}
      */
     public function resolveEndpoint(): string
     {
-        return "/Country/{$this->country}";
+        return "/account";
     }
 
     public function createDtoFromResponse(Response $response): Account
