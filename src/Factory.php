@@ -27,6 +27,8 @@ final class Factory extends Connector
         return [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
+            'X-Api-Key' => config('baylinks-laravel.api.key'),
+            'X-Api-Secret' => config('baylinks-laravel.api.secret')
         ];
     }
 
