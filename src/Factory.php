@@ -38,6 +38,7 @@ final class Factory extends Connector
 
         return $this;
     }
+
     public function countries(): AccountResource
     {
         return new AccountResource($this);
