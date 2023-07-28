@@ -2,7 +2,6 @@
 
 namespace PalPalani\BayLinks;
 
-use PalPalani\BayLinks\Commands\BayLinksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,9 +16,6 @@ class BayLinksServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('baylinks-laravel')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_baylinks-laravel_table')
-            ->hasCommand(BayLinksCommand::class);
+            ->hasConfigFile();
     }
 }
