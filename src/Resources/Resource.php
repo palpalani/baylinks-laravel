@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalani\BayLinks\Resources;
+namespace PalPalani\BayLinks\Resources;
 
 use Saloon\Contracts\Connector;
 

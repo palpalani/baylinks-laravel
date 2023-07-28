@@ -1,0 +1,20 @@
+<?php
+
+namespace PalPalani\BayLinks\Responses\Map;
+
+use PalPalani\BayLinks\Objects\Map;
+use Saloon\Contracts\Response;
+
+/**
+ * @phpstan-import-type MapData from Map
+ */
+final class GetMapResponse
+{
+    public static function make(Response $response): Map
+    {
+        /** @var MapData $data */
+        $data = $response->json();
+
+        return Map::from($data);
+    }
+}

@@ -2,7 +2,7 @@
 
 namespace PalPalani\BayLinks;
 
-class BayLinks
+final class BayLinks
 {
     public static function client(string $apiVersion = 'v1'): Factory
     {

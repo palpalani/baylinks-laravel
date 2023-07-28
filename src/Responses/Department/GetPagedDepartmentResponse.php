@@ -1,0 +1,33 @@
+<?php
+
+namespace PalPalani\BayLinks\Responses\Department;
+
+use PalPalani\BayLinks\Objects\Department;
+use PalPalani\BayLinks\Objects\Paged;
+use Saloon\Contracts\Response;
+
+/**
+ * @phpstan-import-type PagedData from Paged
+ */
+final class GetPagedDepartmentResponse
+{
+    /**
+     * TODO: fix workaround for phpstan
+     *
+     * @return Paged<Department>
+     */
+    public static function make(Response $response): Paged
+    {
+        /** @var PagedData $data */
+        $data = $response->json();
+
+        /** @var Paged<Department> $paginated */
+        $paginated = Paged::from(array_merge($data, [
+            'data' => is_null($data['data'])
+                ? []
+                : array_map(fn ($department): Department => Department::from($department), $data['data']),
+        ]));
+
+        return $paginated;
+    }
+}

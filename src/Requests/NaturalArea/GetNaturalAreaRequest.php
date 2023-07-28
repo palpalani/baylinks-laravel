@@ -1,0 +1,35 @@
+<?php
+
+namespace PalPalani\BayLinks\Requests\NaturalArea;
+
+use PalPalani\BayLinks\Objects\NaturalArea;
+use PalPalani\BayLinks\Responses\NaturalArea\GetNaturalAreaResponse;
+use Saloon\Contracts\Response;
+use Saloon\Enums\Method;
+use Saloon\Http\Request;
+use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
+
+final class GetNaturalAreaRequest extends Request
+{
+    use AlwaysThrowOnErrors;
+
+    protected Method $method = Method::GET;
+
+    public function __construct(protected int $naturalAreaId)
+    {
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function resolveEndpoint(): string
+    {
+        return "/NaturalArea/$this->naturalAreaId";
+    }
+
+    public function createDtoFromResponse(Response $response): NaturalArea
+    {
+        return GetNaturalAreaResponse::make($response);
+    }
+}

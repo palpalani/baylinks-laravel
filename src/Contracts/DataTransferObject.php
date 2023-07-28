@@ -1,6 +1,6 @@
 <?php
 
-namespace Palpalani\BayLinks\Contracts;
+namespace PalPalani\BayLinks\Contracts;
 
 /**
  * @template T of array

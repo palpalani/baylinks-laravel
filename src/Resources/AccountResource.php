@@ -1,19 +1,17 @@
 <?php
 
-namespace Palpalani\BayLinks\Resources;
+namespace PalPalani\BayLinks\Resources;
 
-use Palpalani\BayLinks\Objects\Account;
-use Palpalani\BayLinks\Requests\Account\GetAccountRequest;
+use PalPalani\BayLinks\Objects\Account;
+use PalPalani\BayLinks\Requests\Account\GetAccountRequest;
 
 final class AccountResource extends Resource
 {
     /**
      * @return mixed|Account
      */
-    public function get(): mixed
+    public function get(string $country): mixed
     {
-        dd('D');
-
-        return $this->connector->send(new GetAccountRequest())->dto();
+        return $this->connector->send(new GetAccountRequest($country))->dto();
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
-namespace Palpalani\BayLinks;
+declare(strict_types=1);
 
-use Palpalani\BayLinks\Resources\AccountResource;
-use Palpalani\BayLinks\Resources\GenerateLinkResource;
+namespace PalPalani\BayLinks;
+
+use PalPalani\BayLinks\Resources\AccountResource;
 use Saloon\Http\Connector;
 
 final class Factory extends Connector
@@ -15,7 +16,20 @@ final class Factory extends Connector
      */
     public function resolveBaseUrl(): string
     {
-        return config('baylinks-laravel.server').'/'.config('baylinks-laravel.api.url');
+        return "https://api-colombia.com/api/{$this->apiVersion}";
+    }
+
+    /**
+     * Define default headers
+     *
+     * @return string[]
+     */
+    protected function defaultHeaders(): array
+    {
+        return [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ];
     }
 
     public function withApiVersion(string $apiVersion): self
@@ -24,14 +38,8 @@ final class Factory extends Connector
 
         return $this;
     }
-
-    public function accountDetails(): AccountResource
+    public function countries(): AccountResource
     {
         return new AccountResource($this);
-    }
-
-    public function generateLink(): GenerateLinkResource
-    {
-        return new GenerateLinkResource($this);
     }
 }

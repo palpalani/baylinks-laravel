@@ -1,15 +1,15 @@
 <?php
 
-namespace Palpalani\BayLinks\Objects;
+namespace PalPalani\BayLinks\Objects;
 
-use Palpalani\BayLinks\Contracts\DataTransferObject;
+use PalPalani\BayLinks\Contracts\DataTransferObject;
 use Saloon\Contracts\DataObjects\WithResponse;
 use Saloon\Traits\Responses\HasResponse;
 
 /**
- * @phpstan-type AccountData array{success: bool|null, code: int|null, locale: string|null, message: string|null, data: array|null}
+ * @phpstan-type CountryData array{id: int, name: string|null, description: string|null, stateCapital: string|null, surface: int, population: int, languages: array<int, string>|null, timeZone: string|null, currency: string|null, currencyCode: string|null, currencySymbol: string|null, isoCode: string|null, internetDomain: string|null, phonePrefix: string|null, radioPrefix: string|null, aircraftPrefix: string|null, subRegion: string|null, region: string|null, borders: array<int, string>|null, flags: array<int,string>|null}
  *
- * @implements DataTransferObject<AccountData>
+ * @implements DataTransferObject<CountryData>
  */
 final class Account implements DataTransferObject, WithResponse
 {
@@ -21,11 +21,26 @@ final class Account implements DataTransferObject, WithResponse
      * @param  string[]|null  $flags
      */
     public function __construct(
-        public readonly ?bool $success,
-        public readonly ?int $code,
-        public readonly ?string $locale,
-        public readonly ?string $message,
-        public readonly ?array $data,
+        public readonly int $id,
+        public readonly int $surface,
+        public readonly int $population,
+        public readonly ?array $languages = null,
+        public readonly ?string $name = null,
+        public readonly ?string $description = null,
+        public readonly ?string $stateCapital = null,
+        public readonly ?string $timeZone = null,
+        public readonly ?string $currency = null,
+        public readonly ?string $currencyCode = null,
+        public readonly ?string $currencySymbol = null,
+        public readonly ?string $isoCode = null,
+        public readonly ?string $internetDomain = null,
+        public readonly ?string $phonePrefix = null,
+        public readonly ?string $radioPrefix = null,
+        public readonly ?string $aircraftPrefix = null,
+        public readonly ?string $subRegion = null,
+        public readonly ?string $region = null,
+        public readonly ?array $borders = null,
+        public readonly ?array $flags = null,
     ) {
     }
 

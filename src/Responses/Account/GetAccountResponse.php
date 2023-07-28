@@ -1,8 +1,8 @@
 <?php
 
-namespace Palpalani\BayLinks\Responses\Account;
+namespace PalPalani\BayLinks\Responses\Account;
 
-use Palpalani\BayLinks\Objects\Account;
+use PalPalani\BayLinks\Objects\Account;
 use Saloon\Contracts\Response;
 
 /**

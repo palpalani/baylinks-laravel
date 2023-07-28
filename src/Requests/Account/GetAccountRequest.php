@@ -1,9 +1,9 @@
 <?php
 
-namespace Palpalani\BayLinks\Requests\Account;
+namespace PalPalani\BayLinks\Requests\Account;
 
-use Palpalani\BayLinks\Objects\Account;
-use Palpalani\BayLinks\Responses\Account\GetAccountResponse;
+use PalPalani\BayLinks\Objects\Account;
+use PalPalani\BayLinks\Responses\Account\GetAccountResponse;
 use Saloon\Contracts\Response;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -15,23 +15,18 @@ final class GetAccountRequest extends Request
 
     protected Method $method = Method::GET;
 
+    public function __construct(protected string $country)
+    {
+
+    }
+
     /**
      * {@inheritDoc}
      */
     public function resolveEndpoint(): string
     {
-        return '/account';
+        return "/Country/{$this->country}";
     }
-    /*
-        protected function defaultHeaders(): array
-        {
-            return [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'Api-Key' => config('baylinks-laravel.api.key'),
-                'Api-Secret' => config('baylinks-laravel.api.secret'),
-            ];
-        } */
 
     public function createDtoFromResponse(Response $response): Account
     {
