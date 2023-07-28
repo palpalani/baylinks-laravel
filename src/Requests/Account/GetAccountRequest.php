@@ -20,7 +20,7 @@ final class GetAccountRequest extends Request
      */
     public function resolveEndpoint(): string
     {
-        return "/account";
+        return '/account';
     }
 
     public function createDtoFromResponse(Response $response): Account

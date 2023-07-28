@@ -14,7 +14,7 @@ final class Factory extends Connector
      */
     public function resolveBaseUrl(): string
     {
-        return config('baylinks-laravel.server') . '/' . config('baylinks-laravel.api.url');
+        return config('baylinks-laravel.server').'/'.config('baylinks-laravel.api.url');
     }
 
     /**
