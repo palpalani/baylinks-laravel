@@ -24,8 +24,38 @@ php artisan vendor:publish --tag="baylinks-laravel-config"
 ## Usage
 
 ```php
-$bayLinks = new PalPalani\BayLinks();
-echo $bayLinks->echoPhrase('Hello, PalPalani!');
+Update the server information:
+
+return [
+    'server' => env('BAYLINKS_SERVER'), // Server domain
+
+    'api' => [
+        'url' => 'api/v1', // API Version
+        'key' => env('BAYLINKS_API_KEY'), // API Key
+        'secret' => env('BAYLINKS_API_SECRET'),  // API Secret
+    ],
+];
+
+```
+
+```php
+Get the account Information:
+
+$bayLinks = BayLinks::client();
+$getAccount = $bayLinks->accountDetails()->get();
+
+```
+
+```php
+Create a Single Short URL:
+
+$bayLinks = BayLinks::client();
+$getAccount = $bayLinks->createShortURL()
+->post([
+        "destination" => "<Source URL>", // required
+        "domain" => "<Custom domain>" // optional
+]);
+
 ```
 
 ## Testing
