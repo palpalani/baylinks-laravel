@@ -8,8 +8,8 @@ use Saloon\Contracts\Body\HasBody;
 use Saloon\Contracts\Response;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 use Saloon\Traits\Body\HasJsonBody;
+use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 
 final class CreateShortURLRequest extends Request implements HasBody
 {
@@ -32,9 +32,6 @@ final class CreateShortURLRequest extends Request implements HasBody
         return $this->data;
     }
 
-    /**
-     * @return Account
-     */
     public function createDtoFromResponse(Response $response): Account
     {
         return GetShortURLResponse::make($response);
