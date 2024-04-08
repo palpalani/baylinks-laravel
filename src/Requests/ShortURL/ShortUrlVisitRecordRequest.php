@@ -18,7 +18,7 @@ final class ShortUrlVisitRecordRequest extends Request implements HasBody
 
     protected Method $method = Method::POST;
 
-    public function __construct(protected array $data = [])
+    public function __construct(protected string $access_token, protected array $data = [])
     {
     }
 
@@ -31,7 +31,12 @@ final class ShortUrlVisitRecordRequest extends Request implements HasBody
     {
         return $this->data;
     }
-
+    protected function defaultHeaders(): array
+    {
+        return [
+            'X-Api-Key' => $this->access_token,
+        ];
+    }
     public function createDtoFromResponse(Response $response): Account
     {
         return ShortUrlVisitRecordResponse::make($response);

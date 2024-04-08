@@ -16,13 +16,24 @@ final class GetAccountRequest extends Request
     protected Method $method = Method::GET;
 
     /**
+     * access_token
+     */
+    public function __construct(protected string $access_token)
+    {
+    }
+    /**
      * {@inheritDoc}
      */
     public function resolveEndpoint(): string
     {
         return '/account';
     }
-
+    protected function defaultHeaders(): array
+    {
+        return [
+            'X-Api-Key' => $this->access_token,
+        ];
+    }
     public function createDtoFromResponse(Response $response): Account
     {
         return GetAccountResponse::make($response);

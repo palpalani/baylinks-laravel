@@ -10,8 +10,8 @@ final class CreateShortURLResource extends Resource
     /**
      * @return mixed|Account
      */
-    public function post(array $data): mixed
+    public function post(string $access_token, array $data): mixed
     {
-        return $this->connector->send(new CreateShortURLRequest($data))->dto();
+        return $this->connector->send(new CreateShortURLRequest($access_token, $data))->dto();
     }
 }
