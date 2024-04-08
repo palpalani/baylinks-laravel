@@ -21,6 +21,7 @@ final class GetAccountRequest extends Request
     public function __construct(protected string $access_token)
     {
     }
+
     /**
      * {@inheritDoc}
      */
@@ -28,12 +29,14 @@ final class GetAccountRequest extends Request
     {
         return '/account';
     }
+
     protected function defaultHeaders(): array
     {
         return [
             'X-Api-Key' => $this->access_token,
         ];
     }
+
     public function createDtoFromResponse(Response $response): Account
     {
         return GetAccountResponse::make($response);

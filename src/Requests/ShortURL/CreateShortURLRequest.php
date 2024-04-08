@@ -31,7 +31,7 @@ final class CreateShortURLRequest extends Request implements HasBody
     {
         return $this->data;
     }
-    
+
     protected function defaultHeaders(): array
     {
         return [
