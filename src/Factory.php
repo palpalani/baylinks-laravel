@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace PalPalani\BayLinks;
 
 use PalPalani\BayLinks\Resources\AccountResource;
-use PalPalani\BayLinks\Resources\CreateShortURLResource;
 use PalPalani\BayLinks\Resources\CreateBulkURLResource;
+use PalPalani\BayLinks\Resources\CreateShortURLResource;
 use PalPalani\BayLinks\Resources\ShortUrlVisitRecordResource;
 use Saloon\Http\Connector;
 
