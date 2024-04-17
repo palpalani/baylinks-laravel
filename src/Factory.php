@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PalPalani\BayLinks;
 
 use PalPalani\BayLinks\Resources\AccountResource;
+use PalPalani\BayLinks\Resources\CreateBulkURLResource;
 use PalPalani\BayLinks\Resources\CreateShortURLResource;
 use PalPalani\BayLinks\Resources\ShortUrlVisitRecordResource;
 use Saloon\Http\Connector;
@@ -29,8 +30,8 @@ final class Factory extends Connector
         return [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'X-Api-Key' => config('baylinks-laravel.api.key'),
-            'X-Api-Secret' => config('baylinks-laravel.api.secret'),
+            // 'X-Api-Key' => config('baylinks-laravel.api.key'),
+            // 'X-Api-Secret' => config('baylinks-laravel.api.secret'),
         ];
     }
 
@@ -42,6 +43,11 @@ final class Factory extends Connector
     public function createShortURL(): CreateShortURLResource
     {
         return new CreateShortURLResource($this);
+    }
+
+    public function createBulkURL(): CreateBulkURLResource
+    {
+        return new CreateBulkURLResource($this);
     }
 
     public function ShortUrlVisitRecord(): ShortUrlVisitRecordResource

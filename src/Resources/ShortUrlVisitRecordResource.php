@@ -10,8 +10,8 @@ final class ShortUrlVisitRecordResource extends Resource
     /**
      * @return mixed|Account
      */
-    public function post(array $data): mixed
+    public function post(string $access_token, array $data): mixed
     {
-        return $this->connector->send(new ShortUrlVisitRecordRequest($data))->dto();
+        return $this->connector->send(new ShortUrlVisitRecordRequest($access_token, $data))->dto();
     }
 }
