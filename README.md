@@ -57,7 +57,7 @@ $bayLinks->createShortURL()
 ```php
 Create a Bulk Short URL:
 
-$bayLinks->createShortURL()
+$bayLinks->createBulkURL()
     ->post(<BAYLINKS_API_KEY>, 
         [
             "destination": [  // required
