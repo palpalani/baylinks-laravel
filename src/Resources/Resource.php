@@ -2,7 +2,7 @@
 
 namespace PalPalani\BayLinks\Resources;
 
-use Saloon\Contracts\Connector;
+use Saloon\Http\Connector;
 
 abstract class Resource
 {

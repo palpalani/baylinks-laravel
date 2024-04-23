@@ -5,9 +5,9 @@ namespace PalPalani\BayLinks\Requests\ShortURL;
 use PalPalani\BayLinks\Objects\Account;
 use PalPalani\BayLinks\Responses\ShortURL\ShortUrlVisitRecordResponse;
 use Saloon\Contracts\Body\HasBody;
-use Saloon\Contracts\Response;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 
