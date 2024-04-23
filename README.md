@@ -7,6 +7,8 @@
 
 BayLinks PHP SDK for Laravel framework.
 
+[BayLinks](https://baylinks.io) is a powerful URL shortening and management platform tailored for modern businesses. As a Software as a Service (SaaS) solution, BayLinks empowers organizations to create, customize, and track short links effortlessly. Perfect for marketing campaigns, email newsletters, and internal communications, [BayLinks](https://baylinks.io) simplifies link sharing and enhances brand visibility. With robust analytics and customizable branding options, [BayLinks](https://baylinks.io) is the go-to solution for businesses seeking efficient link management and optimization.
+
 ## Installation
 
 You can install the package via composer:
