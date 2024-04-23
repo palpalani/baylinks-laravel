@@ -7,6 +7,8 @@
 
 BayLinks PHP SDK for Laravel framework.
 
+[BayLinks](https://baylinks.io) is a powerful URL shortening and management platform tailored for modern businesses. As a Software as a Service (SaaS) solution, BayLinks empowers organizations to create, customize, and track short links effortlessly. Perfect for marketing campaigns, email newsletters, and internal communications, [BayLinks](https://baylinks.io) simplifies link sharing and enhances brand visibility. With robust analytics and customizable branding options, [BayLinks](https://baylinks.io) is the go-to solution for businesses seeking efficient link management and optimization.
+
 ## Installation
 
 You can install the package via composer:
@@ -27,14 +29,21 @@ php artisan vendor:publish --tag="baylinks-laravel-config"
 Update the server information:
 
 return [
-    'server' => env('BAYLINKS_SERVER'), // Server domain
 
+    /**
+     * BayLinks URL.
+     */
+    'server' => env('BAYLINKS_SERVER'),
+
+    /**
+     * Rest API version of BayLinks.
+     */
     'api' => [
-        'url' => 'api/v1', // API Version
+        'url' => 'api/v1',
     ],
 ];
-
 ```
+
 ```php
 Get the account Information:
 
@@ -42,18 +51,19 @@ $bayLinks = BayLinks::client();
 $bayLinks->accountDetails()->get(<BAYLINKS_API_KEY>);
 
 ```
+
 ```php
 Create a Single Short URL:
 
 $bayLinks->createShortURL()
     ->post(<BAYLINKS_API_KEY>, 
         [
-                "destination" => "<Source URL>", // required
-                "domain" => "<Custom domain>" // optional
+            "destination" => "<Source URL>", // required
+            "domain" => "<Custom domain>" // optional
         ]
     );
-
 ```
+
 ```php
 Create a Bulk Short URL:
 
@@ -73,9 +83,7 @@ $bayLinks->createBulkURL()
             "tag": [] // optional callback data 
         ]
     );
-
 ```
-
 
 ## Testing
 
