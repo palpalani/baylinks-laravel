@@ -4,7 +4,7 @@ namespace PalPalani\BayLinks\Requests\Account;
 
 use PalPalani\BayLinks\Objects\Account;
 use PalPalani\BayLinks\Responses\Account\GetAccountResponse;
-use Saloon\Contracts\Response;
+use Saloon\Http\Response;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;

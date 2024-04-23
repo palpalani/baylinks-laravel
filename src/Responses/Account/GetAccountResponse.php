@@ -3,7 +3,7 @@
 namespace PalPalani\BayLinks\Responses\Account;
 
 use PalPalani\BayLinks\Objects\Account;
-use Saloon\Contracts\Response;
+use Saloon\Http\Response;
 
 /**
  * @phpstan-import-type AccountData from Account
