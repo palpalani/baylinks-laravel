@@ -33,8 +33,8 @@ return [
         'url' => 'api/v1', // API Version
     ],
 ];
-
 ```
+
 ```php
 Get the account Information:
 
@@ -42,18 +42,19 @@ $bayLinks = BayLinks::client();
 $bayLinks->accountDetails()->get(<BAYLINKS_API_KEY>);
 
 ```
+
 ```php
 Create a Single Short URL:
 
 $bayLinks->createShortURL()
     ->post(<BAYLINKS_API_KEY>, 
         [
-                "destination" => "<Source URL>", // required
-                "domain" => "<Custom domain>" // optional
+            "destination" => "<Source URL>", // required
+            "domain" => "<Custom domain>" // optional
         ]
     );
-
 ```
+
 ```php
 Create a Bulk Short URL:
 
@@ -73,9 +74,7 @@ $bayLinks->createBulkURL()
             "tag": [] // optional callback data 
         ]
     );
-
 ```
-
 
 ## Testing
 
