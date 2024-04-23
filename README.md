@@ -29,10 +29,17 @@ php artisan vendor:publish --tag="baylinks-laravel-config"
 Update the server information:
 
 return [
-    'server' => env('BAYLINKS_SERVER'), // Server domain
 
+    /**
+     * BayLinks URL.
+     */
+    'server' => env('BAYLINKS_SERVER'),
+
+    /**
+     * Rest API version of BayLinks.
+     */
     'api' => [
-        'url' => 'api/v1', // API Version
+        'url' => 'api/v1',
     ],
 ];
 ```
