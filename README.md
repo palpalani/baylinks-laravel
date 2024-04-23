@@ -31,32 +31,51 @@ return [
 
     'api' => [
         'url' => 'api/v1', // API Version
-        'key' => env('BAYLINKS_API_KEY'), // API Key
-        'secret' => env('BAYLINKS_API_SECRET'),  // API Secret
     ],
 ];
 
 ```
-
 ```php
 Get the account Information:
 
 $bayLinks = BayLinks::client();
-$getAccount = $bayLinks->accountDetails()->get();
+$bayLinks->accountDetails()->get(<BAYLINKS_API_KEY>);
 
 ```
-
 ```php
 Create a Single Short URL:
 
-$bayLinks = BayLinks::client();
-$getAccount = $bayLinks->createShortURL()
-->post([
-        "destination" => "<Source URL>", // required
-        "domain" => "<Custom domain>" // optional
-]);
+$bayLinks->createShortURL()
+    ->post(<BAYLINKS_API_KEY>, 
+        [
+                "destination" => "<Source URL>", // required
+                "domain" => "<Custom domain>" // optional
+        ]
+    );
 
 ```
+```php
+Create a Bulk Short URL:
+
+$bayLinks->createBulkURL()
+    ->post(<BAYLINKS_API_KEY>, 
+        [
+            "destination": [  // required
+                "<Source URL>",
+                "<Source URL>"
+                .
+                .
+                "<Source URL>"
+            ],
+            "domain": "<Custom domain>",// optional
+            "planet": "jupiter", // optional
+            "expire": 0, // optional
+            "tag": [] // optional callback data 
+        ]
+    );
+
+```
+
 
 ## Testing
 
