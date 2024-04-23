@@ -4,9 +4,9 @@ namespace PalPalani\BayLinks\Requests\Account;
 
 use PalPalani\BayLinks\Objects\Account;
 use PalPalani\BayLinks\Responses\Account\GetAccountResponse;
-use Saloon\Http\Response;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\Http\Response;
 use Saloon\Traits\Plugins\AlwaysThrowOnErrors;
 
 final class GetAccountRequest extends Request
