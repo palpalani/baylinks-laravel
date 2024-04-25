@@ -2,7 +2,6 @@
 
 namespace PalPalani\BayLinks\Requests\ShortURL;
 
-use PalPalani\BayLinks\Objects\Account;
 use PalPalani\BayLinks\Objects\BulkObject;
 use PalPalani\BayLinks\Responses\ShortURL\GetBulkURLResponse;
 use Saloon\Contracts\Body\HasBody;

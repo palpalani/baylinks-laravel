@@ -14,7 +14,7 @@ final class GetShortURLResponse
     {
         /** @var AccountData $data */
         $data = $response->json();
-        
+
         return new Account(...$data);
     }
 }
