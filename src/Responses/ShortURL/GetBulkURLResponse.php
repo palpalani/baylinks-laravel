@@ -2,19 +2,19 @@
 
 namespace PalPalani\BayLinks\Responses\ShortURL;
 
-use PalPalani\BayLinks\Objects\Account;
+use PalPalani\BayLinks\Objects\BulkObject;
 use Saloon\Http\Response;
 
 /**
- * @phpstan-import-type AccountData from Account
+ * @phpstan-import-type AccountData from BulkObject
  */
 final class GetBulkURLResponse
 {
-    public static function make(Response $response): Account
+    public static function make(Response $response): BulkObject
     {
         /** @var AccountData $data */
         $data = $response->json();
 
-        return new Account(...$data);
+        return new BulkObject(...$data);
     }
 }

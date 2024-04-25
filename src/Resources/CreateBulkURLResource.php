@@ -2,13 +2,13 @@
 
 namespace PalPalani\BayLinks\Resources;
 
-use PalPalani\BayLinks\Objects\Account;
+use PalPalani\BayLinks\Objects\BulkObject;
 use PalPalani\BayLinks\Requests\ShortURL\CreateBulkURLRequest;
 
 final class CreateBulkURLResource extends Resource
 {
     /**
-     * @return mixed|Account
+     * @return mixed|BulkObject
      */
     public function post(string $access_token, array $data): mixed
     {
