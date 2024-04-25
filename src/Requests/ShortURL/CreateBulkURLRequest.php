@@ -2,7 +2,7 @@
 
 namespace PalPalani\BayLinks\Requests\ShortURL;
 
-use PalPalani\BayLinks\Objects\Account;
+use PalPalani\BayLinks\Objects\BulkObject;
 use PalPalani\BayLinks\Responses\ShortURL\GetBulkURLResponse;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -39,7 +39,7 @@ final class CreateBulkURLRequest extends Request implements HasBody
         ];
     }
 
-    public function createDtoFromResponse(Response $response): Account
+    public function createDtoFromResponse(Response $response): BulkObject
     {
         return GetBulkURLResponse::make($response);
     }
