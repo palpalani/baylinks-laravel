@@ -8,6 +8,7 @@ use PalPalani\BayLinks\Resources\AccountResource;
 use PalPalani\BayLinks\Resources\CreateBulkURLResource;
 use PalPalani\BayLinks\Resources\CreateShortURLResource;
 use PalPalani\BayLinks\Resources\ShortUrlVisitRecordResource;
+use PalPalani\BayLinks\Resources\UpdateShortURLStatusResource;
 use Saloon\Http\Connector;
 
 final class Factory extends Connector
@@ -53,5 +54,10 @@ final class Factory extends Connector
     public function ShortUrlVisitRecord(): ShortUrlVisitRecordResource
     {
         return new ShortUrlVisitRecordResource($this);
+    }
+
+    public function updateShortURLStatus(): UpdateShortURLStatusResource
+    {
+        return new UpdateShortURLStatusResource($this);
     }
 }
