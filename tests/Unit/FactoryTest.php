@@ -76,6 +76,6 @@ describe('Factory', function () {
         $resource1 = $factory->accountDetails();
         $resource2 = $factory->accountDetails();
 
-        expect($resource1)->not->toBe($resource2);
+        expect($resource1 !== $resource2)->toBeTrue();
     });
 });
