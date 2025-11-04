@@ -1,0 +1,201 @@
+name: Performance Benchmarks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: benchmark-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  benchmark:
+    name: Run Benchmarks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
+          coverage: none
+          ini-values: opcache.enable=1, opcache.enable_cli=1
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Create benchmark placeholder
+        run: |
+          mkdir -p benchmarks
+          cat > benchmarks/README.md << 'EOF'
+          # Benchmarks
+
+          This directory will contain performance benchmarks using PHPBench or similar tools.
+
+          ## Setup
+
+          To add benchmarks:
+
+          1. Install PHPBench:
+             ```bash
+             composer require --dev phpbench/phpbench
+             ```
+
+          2. Create benchmark files in this directory
+
+          3. Run benchmarks:
+             ```bash
+             vendor/bin/phpbench run benchmarks --report=default
+             ```
+
+          ## Example Benchmark
+
+          ```php
+          <?php
+
+          namespace PalPalani\BayLinks\Benchmarks;
+
+          use PalPalani\BayLinks\BayLinks;
+
+          class ClientBench
+          {
+              /**
+               * @Revs(1000)
+               * @Iterations(5)
+               */
+              public function benchClientCreation(): void
+              {
+                  $client = BayLinks::client();
+              }
+          }
+          ```
+          EOF
+
+      - name: Performance check - Composer autoload
+        run: |
+          echo "## Composer Autoload Performance" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          time composer dump-autoload --optimize --classmap-authoritative 2>&1 | tee -a $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Performance check - File count
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Project Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| PHP Files (src) | $(find src -name '*.php' | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| PHP Files (tests) | $(find tests -name '*.php' | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Total Lines (src) | $(find src -name '*.php' -exec wc -l {} + | tail -1 | awk '{print $1}') |" >> $GITHUB_STEP_SUMMARY
+          echo "| Vendor Size | $(du -sh vendor 2>/dev/null | awk '{print $1}' || echo 'N/A') |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Memory usage check
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Memory Usage Tests" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`php" >> $GITHUB_STEP_SUMMARY
+          php -r "
+          require 'vendor/autoload.php';
+          \$before = memory_get_usage();
+          \$client = PalPalani\\BayLinks\\BayLinks::client();
+          \$after = memory_get_usage();
+          echo 'Client instantiation memory: ' . number_format((\$after - \$before) / 1024, 2) . ' KB' . PHP_EOL;
+          echo 'Total memory used: ' . number_format(memory_get_usage() / 1024 / 1024, 2) . ' MB' . PHP_EOL;
+          echo 'Peak memory used: ' . number_format(memory_get_peak_usage() / 1024 / 1024, 2) . ' MB' . PHP_EOL;
+          " | tee -a $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Class loading performance
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Class Loading Performance" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          php -r "
+          \$start = microtime(true);
+          require 'vendor/autoload.php';
+          \$autoloadTime = (microtime(true) - \$start) * 1000;
+
+          \$start = microtime(true);
+          \$client = PalPalani\\BayLinks\\BayLinks::client();
+          \$clientTime = (microtime(true) - \$start) * 1000;
+
+          echo 'Autoload time: ' . number_format(\$autoloadTime, 3) . ' ms' . PHP_EOL;
+          echo 'Client creation time: ' . number_format(\$clientTime, 3) . ' ms' . PHP_EOL;
+          echo 'Total initialization: ' . number_format(\$autoloadTime + \$clientTime, 3) . ' ms' . PHP_EOL;
+          " | tee -a $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Placeholder for future benchmarks
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Future Benchmark Suites" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "To add comprehensive benchmarks, consider:" >> $GITHUB_STEP_SUMMARY
+          echo "- Installing PHPBench: \`composer require --dev phpbench/phpbench\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Creating benchmark classes in \`benchmarks/\` directory" >> $GITHUB_STEP_SUMMARY
+          echo "- Benchmarking API request creation overhead" >> $GITHUB_STEP_SUMMARY
+          echo "- Benchmarking DTO transformation performance" >> $GITHUB_STEP_SUMMARY
+          echo "- Comparing performance across PHP versions" >> $GITHUB_STEP_SUMMARY
+
+  compare:
+    name: Compare with baseline
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Run quick performance test
+        id: pr-perf
+        run: |
+          RESULT=$(php -r "
+          require 'vendor/autoload.php';
+          \$iterations = 1000;
+          \$start = microtime(true);
+          for (\$i = 0; \$i < \$iterations; \$i++) {
+              \$client = PalPalani\\BayLinks\\BayLinks::client();
+          }
+          \$elapsed = (microtime(true) - \$start) * 1000;
+          echo number_format(\$elapsed / \$iterations, 4);
+          ")
+          echo "time=$RESULT" >> $GITHUB_OUTPUT
+
+      - name: Performance summary
+        run: |
+          echo "## ⚡ Performance Comparison" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Average client creation time (1000 iterations): **${{ steps.pr-perf.outputs.time }} ms**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> 💡 For detailed performance analysis, run benchmarks locally" >> $GITHUB_STEP_SUMMARY
