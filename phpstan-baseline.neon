@@ -1,326 +1,403 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Missing parameter \\$code \\(int\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Out of 44 possible return types, only 43 \- 97\.7 %% actually have it\. Add more return types to get over 99 %%$#'
+			identifier: typeCoverage.returnTypeCoverage
+			count: 1
+			path: src/Facades/BayLinks.php
+
+		-
+			message: '#^Out of 47 possible param types, only 45 \- 95\.7 %% actually have it\. Add more param types to get over 99 %%$#'
+			identifier: typeCoverage.paramTypeCoverage
+			count: 2
+			path: src/Helpers/Arr.php
+
+		-
+			message: '#^Missing parameter \$code \(int\|null\) in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Missing parameter \\$data \\(array\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Missing parameter \$data \(array\|null\) in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Missing parameter \\$locale \\(string\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Missing parameter \$locale \(string\|null\) in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Missing parameter \\$message \\(string\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Missing parameter \$message \(string\|null\) in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Missing parameter \\$success \\(bool\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Missing parameter \$success \(bool\|null\) in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$borders$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$borders$#'
+			identifier: parameter.notFound
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$flags$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$flags$#'
+			identifier: parameter.notFound
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$languages$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$languages$#'
+			identifier: parameter.notFound
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$aircraftPrefix in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$aircraftPrefix in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$borders in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$borders in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$currency in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$currency in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$currencyCode in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$currencyCode in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$currencySymbol in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$currencySymbol in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$description in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$description in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$flags in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$flags in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$id in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$id in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$internetDomain in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$internetDomain in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$isoCode in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$isoCode in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$languages in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$languages in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$name in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$name in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$phonePrefix in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$phonePrefix in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$population in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$population in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$radioPrefix in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$radioPrefix in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$region in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$region in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$stateCapital in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$stateCapital in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$subRegion in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$subRegion in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$surface in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$surface in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Unknown parameter \\$timeZone in call to PalPalani\\\\BayLinks\\\\Objects\\\\Account constructor\\.$#"
+			message: '#^Unknown parameter \$timeZone in call to PalPalani\\BayLinks\\Objects\\Account constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/Account.php
 
 		-
-			message: "#^Missing parameter \\$code \\(int\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Missing parameter \$code \(int\|null\) in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Missing parameter \\$count \\(int\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Missing parameter \$count \(int\|null\) in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Missing parameter \\$data \\(array\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Missing parameter \$data \(array\|null\) in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Missing parameter \\$locale \\(string\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Missing parameter \$locale \(string\|null\) in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Missing parameter \\$message \\(string\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Missing parameter \$message \(string\|null\) in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Missing parameter \\$success \\(bool\\|null\\) in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Missing parameter \$success \(bool\|null\) in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.missing
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$borders$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$borders$#'
+			identifier: parameter.notFound
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$flags$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$flags$#'
+			identifier: parameter.notFound
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$languages$#"
+			message: '#^PHPDoc tag @param references unknown parameter\: \$languages$#'
+			identifier: parameter.notFound
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$aircraftPrefix in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$aircraftPrefix in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$borders in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$borders in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$currency in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$currency in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$currencyCode in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$currencyCode in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$currencySymbol in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$currencySymbol in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$description in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$description in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$flags in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$flags in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$id in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$id in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$internetDomain in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$internetDomain in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$isoCode in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$isoCode in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$languages in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$languages in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$name in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$name in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$phonePrefix in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$phonePrefix in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$population in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$population in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$radioPrefix in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$radioPrefix in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$region in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$region in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$stateCapital in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$stateCapital in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$subRegion in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$subRegion in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$surface in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$surface in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Unknown parameter \\$timeZone in call to PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject constructor\\.$#"
+			message: '#^Unknown parameter \$timeZone in call to PalPalani\\BayLinks\\Objects\\BulkObject constructor\.$#'
+			identifier: argument.unknown
 			count: 1
 			path: src/Objects/BulkObject.php
 
 		-
-			message: "#^Cannot import type alias AccountData\\: type alias does not exist in PalPalani\\\\BayLinks\\\\Objects\\\\Account\\.$#"
+			message: '#^Cannot import type alias AccountData\: type alias does not exist in PalPalani\\BayLinks\\Objects\\Account\.$#'
+			identifier: typeAlias.notFound
 			count: 1
 			path: src/Responses/Account/GetAccountResponse.php
 
 		-
-			message: "#^PHPDoc tag @var for variable \\$data contains unknown class PalPalani\\\\BayLinks\\\\Responses\\\\Account\\\\AccountData\\.$#"
+			message: '#^PHPDoc tag @var for variable \$data contains unknown class PalPalani\\BayLinks\\Responses\\Account\\AccountData\.$#'
+			identifier: class.notFound
 			count: 1
 			path: src/Responses/Account/GetAccountResponse.php
 
 		-
-			message: "#^Cannot import type alias AccountData\\: type alias does not exist in PalPalani\\\\BayLinks\\\\Objects\\\\BulkObject\\.$#"
+			message: '#^Cannot import type alias AccountData\: type alias does not exist in PalPalani\\BayLinks\\Objects\\BulkObject\.$#'
+			identifier: typeAlias.notFound
 			count: 1
 			path: src/Responses/ShortURL/GetBulkURLResponse.php
 
 		-
-			message: "#^PHPDoc tag @var for variable \\$data contains unknown class PalPalani\\\\BayLinks\\\\Responses\\\\ShortURL\\\\AccountData\\.$#"
+			message: '#^PHPDoc tag @var for variable \$data contains unknown class PalPalani\\BayLinks\\Responses\\ShortURL\\AccountData\.$#'
+			identifier: class.notFound
 			count: 1
 			path: src/Responses/ShortURL/GetBulkURLResponse.php
 
 		-
-			message: "#^Cannot import type alias AccountData\\: type alias does not exist in PalPalani\\\\BayLinks\\\\Objects\\\\Account\\.$#"
+			message: '#^Cannot import type alias AccountData\: type alias does not exist in PalPalani\\BayLinks\\Objects\\Account\.$#'
+			identifier: typeAlias.notFound
 			count: 1
 			path: src/Responses/ShortURL/GetShortURLResponse.php
 
 		-
-			message: "#^PHPDoc tag @var for variable \\$data contains unknown class PalPalani\\\\BayLinks\\\\Responses\\\\ShortURL\\\\AccountData\\.$#"
+			message: '#^PHPDoc tag @var for variable \$data contains unknown class PalPalani\\BayLinks\\Responses\\ShortURL\\AccountData\.$#'
+			identifier: class.notFound
 			count: 1
 			path: src/Responses/ShortURL/GetShortURLResponse.php
 
 		-
-			message: "#^Cannot import type alias AccountData\\: type alias does not exist in PalPalani\\\\BayLinks\\\\Objects\\\\Account\\.$#"
+			message: '#^Cannot import type alias AccountData\: type alias does not exist in PalPalani\\BayLinks\\Objects\\Account\.$#'
+			identifier: typeAlias.notFound
 			count: 1
 			path: src/Responses/ShortURL/ShortUrlVisitRecordResponse.php
 
 		-
-			message: "#^PHPDoc tag @var for variable \\$data contains unknown class PalPalani\\\\BayLinks\\\\Responses\\\\ShortURL\\\\AccountData\\.$#"
+			message: '#^PHPDoc tag @var for variable \$data contains unknown class PalPalani\\BayLinks\\Responses\\ShortURL\\AccountData\.$#'
+			identifier: class.notFound
 			count: 1
 			path: src/Responses/ShortURL/ShortUrlVisitRecordResponse.php
