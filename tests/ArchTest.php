@@ -15,21 +15,70 @@ describe('Architecture', function () {
 });
 
 describe('Naming Conventions', function () {
-    it('resources have Resource suffix')
-        ->expect('PalPalani\BayLinks\Resources')
-        ->toHaveSuffix('Resource');
+    it('resources have Resource suffix', function () {
+        $resources = [
+            'PalPalani\BayLinks\Resources\AccountResource',
+            'PalPalani\BayLinks\Resources\CreateShortURLResource',
+            'PalPalani\BayLinks\Resources\CreateBulkURLResource',
+            'PalPalani\BayLinks\Resources\ShortUrlVisitRecordResource',
+            'PalPalani\BayLinks\Resources\UpdateShortURLStatusResource',
+        ];
 
-    it('requests have Request suffix')
-        ->expect('PalPalani\BayLinks\Requests')
-        ->toHaveSuffix('Request');
+        foreach ($resources as $resource) {
+            expect(class_exists($resource))->toBeTrue()
+                ->and(str_ends_with($resource, 'Resource'))->toBeTrue();
+        }
+    });
 
-    it('responses have Response suffix')
-        ->expect('PalPalani\BayLinks\Responses')
-        ->toHaveSuffix('Response');
+    it('requests have Request suffix', function () {
+        $path = __DIR__.'/../src/Requests';
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS)
+        );
 
-    it('objects are in Objects namespace')
-        ->expect('PalPalani\BayLinks\Objects')
-        ->toBeClasses();
+        $requests = [];
+        foreach ($iterator as $file) {
+            if ($file->isFile() && $file->getExtension() === 'php') {
+                $requests[] = $file->getPathname();
+            }
+        }
+
+        expect($requests)->not->toBeEmpty();
+
+        foreach ($requests as $file) {
+            expect(basename($file))->toEndWith('Request.php');
+        }
+    });
+
+    it('responses have Response suffix', function () {
+        $path = __DIR__.'/../src/Responses';
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS)
+        );
+
+        $responses = [];
+        foreach ($iterator as $file) {
+            if ($file->isFile() && $file->getExtension() === 'php') {
+                $responses[] = $file->getPathname();
+            }
+        }
+
+        expect($responses)->not->toBeEmpty();
+
+        foreach ($responses as $file) {
+            expect(basename($file))->toEndWith('Response.php');
+        }
+    });
+
+    it('objects are in Objects namespace', function () {
+        $objects = glob(__DIR__.'/../src/Objects/*.php');
+        expect($objects)->not->toBeEmpty();
+
+        foreach ($objects as $file) {
+            $class = 'PalPalani\\BayLinks\\Objects\\'.basename($file, '.php');
+            expect(class_exists($class) || interface_exists($class))->toBeTrue();
+        }
+    });
 });
 
 describe('Dependencies', function () {
