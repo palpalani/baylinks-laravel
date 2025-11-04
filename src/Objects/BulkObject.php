@@ -27,8 +27,7 @@ final class BulkObject implements DataTransferObject, WithResponse
         public readonly ?string $message,
         public readonly ?int $count,
         public readonly ?array $data,
-    ) {
-    }
+    ) {}
 
     public static function from(array $data): BulkObject
     {

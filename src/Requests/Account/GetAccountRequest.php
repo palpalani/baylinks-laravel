@@ -18,9 +18,7 @@ final class GetAccountRequest extends Request
     /**
      * access_token
      */
-    public function __construct(protected string $access_token)
-    {
-    }
+    public function __construct(protected string $access_token) {}
 
     /**
      * {@inheritDoc}
