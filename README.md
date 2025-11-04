@@ -318,6 +318,21 @@ This package uses [Saloon PHP](https://docs.saloon.dev/) for HTTP client abstrac
 
 See [CLAUDE.md](CLAUDE.md) for detailed development guidelines.
 
+### Continuous Integration
+
+This package uses GitHub Actions for automated testing and quality checks:
+
+| Workflow | Purpose | Trigger |
+|----------|---------|---------|
+| **Tests** | Run Pest tests across PHP 8.3-8.4, Laravel 11-12, Ubuntu/Windows | Push, PR |
+| **PHPStan** | Static analysis at level 4 | Push, PR |
+| **Code Coverage** | Track test coverage with Codecov | Push, PR |
+| **Security Scan** | Composer audit, dependency review, SBOM generation | Push, PR, Weekly |
+| **Code Style** | Auto-fix with Laravel Pint | Push (branches only) |
+| **PR Quality** | Validate composer.json, check for debug statements | PR only |
+
+All workflows use Composer caching for faster builds and concurrency controls to prevent redundant runs.
+
 ## Troubleshooting
 
 ### Common Issues
