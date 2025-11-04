@@ -20,7 +20,9 @@ describe('BayLinks', function () {
         $client = BayLinks::client();
         $factory = BayLinks::factory();
 
-        expect($client)->toBeInstanceOf(get_class($factory));
+        expect($client)->toBeInstanceOf(Factory::class);
+        expect($factory)->toBeInstanceOf(Factory::class);
+        expect(get_class($client))->toBe(get_class($factory));
     });
 
     it('creates new instances on each call', function () {
