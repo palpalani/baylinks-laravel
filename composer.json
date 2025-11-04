@@ -70,8 +70,8 @@
     "scripts": {
         "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
         "analyse": "vendor/bin/phpstan analyse",
-        "format": "vendor/bin/pint",
-        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint --parallel",
+        "test": "vendor/bin/pest --no-coverage",
         "test-coverage": "vendor/bin/pest --coverage"
     }
 }
