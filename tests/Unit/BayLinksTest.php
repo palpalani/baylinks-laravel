@@ -27,6 +27,6 @@ describe('BayLinks', function () {
         $client1 = BayLinks::client();
         $client2 = BayLinks::client();
 
-        expect($client1)->not->toBe($client2);
+        expect($client1 !== $client2)->toBeTrue();
     });
 });
