@@ -18,8 +18,8 @@ describe('BayLinksServiceProvider', function () {
     });
 
     it('loads configuration from config file', function () {
-        expect(config('baylinks-laravel.server'))->toBeNull()
-            ->and(config('baylinks-laravel.api.url'))->toBe('api/v1');
+        expect(config('baylinks-laravel.server'))->toBeNull();
+        expect(config('baylinks-laravel.api.url'))->toBe('api/v1');
     });
 
     it('merges package config with app config', function () {
