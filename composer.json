@@ -1,13 +1,12 @@
 {
     "name": "palpalani/baylinks-laravel",
     "description": "PHP/Laravel framework SDK for BayLinks.",
+    "license": "MIT",
     "keywords": [
         "palpalani",
         "laravel",
         "baylinks-laravel"
     ],
-    "homepage": "https://github.com/palpalani/baylinks-laravel",
-    "license": "MIT",
     "authors": [
         {
             "name": "palPalani",
@@ -20,17 +19,18 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/palpalani/baylinks-laravel",
     "require": {
         "php": "^8.3",
-        "illuminate/contracts": "^10.0 | ^11.0 | ^12.0",
+        "illuminate/contracts": "^10.0 || ^11.0 || ^12.0",
         "saloonphp/saloon": "^3.0",
         "spatie/laravel-package-tools": "^1.14.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^7.9|^8.1",
         "larastan/larastan": "^2.0.1",
-        "orchestra/testbench": "^8.0|^9.0",
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.9 || ^8.1",
+        "orchestra/testbench": "^8.0 || ^9.0",
         "pestphp/pest": "^4.0",
         "pestphp/pest-plugin-arch": "^4.0",
         "pestphp/pest-plugin-laravel": "^4.0",
@@ -38,6 +38,8 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "PalPalani\\BayLinks\\": "src/"
@@ -48,30 +50,28 @@
             "PalPalani\\BayLinks\\Tests\\": "tests/"
         }
     },
-    "scripts": {
-        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
-    },
     "config": {
-        "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
-        }
+        },
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "PalPalani\\BayLinks\\BayLinksServiceProvider"
-            ],
             "aliases": {
                 "BayLinks": "PalPalani\\BayLinks\\Facades\\BayLinks"
-            }
+            },
+            "providers": [
+                "PalPalani\\BayLinks\\BayLinksServiceProvider"
+            ]
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage"
+    }
 }
