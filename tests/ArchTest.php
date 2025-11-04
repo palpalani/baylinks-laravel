@@ -4,109 +4,105 @@ use PalPalani\BayLinks\Resources\Resource;
 use Saloon\Http\Connector;
 use Saloon\Http\Request;
 
-describe('Architecture', function () {
-    it('will not use debugging functions')
-        ->expect(['dd', 'dump', 'ray', 'var_dump', 'print_r'])
-        ->not->toBeUsed();
+// Architecture tests
+test('will not use debugging functions')
+    ->expect(['dd', 'dump', 'ray', 'var_dump', 'print_r'])
+    ->not->toBeUsed();
 
-    it('does not use die or exit')
-        ->expect(['die', 'exit'])
-        ->not->toBeUsed();
+test('does not use die or exit')
+    ->expect(['die', 'exit'])
+    ->not->toBeUsed();
+
+// Naming Conventions
+test('resources have Resource suffix', function () {
+    $resources = [
+        'PalPalani\BayLinks\Resources\AccountResource',
+        'PalPalani\BayLinks\Resources\CreateShortURLResource',
+        'PalPalani\BayLinks\Resources\CreateBulkURLResource',
+        'PalPalani\BayLinks\Resources\ShortUrlVisitRecordResource',
+        'PalPalani\BayLinks\Resources\UpdateShortURLStatusResource',
+    ];
+
+    foreach ($resources as $resource) {
+        expect(class_exists($resource))->toBeTrue();
+        expect(str_ends_with($resource, 'Resource'))->toBeTrue();
+    }
 });
 
-describe('Naming Conventions', function () {
-    it('resources have Resource suffix', function () {
-        $resources = [
-            'PalPalani\BayLinks\Resources\AccountResource',
-            'PalPalani\BayLinks\Resources\CreateShortURLResource',
-            'PalPalani\BayLinks\Resources\CreateBulkURLResource',
-            'PalPalani\BayLinks\Resources\ShortUrlVisitRecordResource',
-            'PalPalani\BayLinks\Resources\UpdateShortURLStatusResource',
-        ];
+test('requests have Request suffix', function () {
+    $path = __DIR__.'/../src/Requests';
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS)
+    );
 
-        foreach ($resources as $resource) {
-            expect(class_exists($resource))->toBeTrue()
-                ->and(str_ends_with($resource, 'Resource'))->toBeTrue();
+    $requests = [];
+    foreach ($iterator as $file) {
+        if ($file->isFile() && $file->getExtension() === 'php') {
+            $requests[] = $file->getPathname();
         }
-    });
+    }
 
-    it('requests have Request suffix', function () {
-        $path = __DIR__.'/../src/Requests';
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS)
-        );
+    expect(count($requests) > 0)->toBeTrue();
 
-        $requests = [];
-        foreach ($iterator as $file) {
-            if ($file->isFile() && $file->getExtension() === 'php') {
-                $requests[] = $file->getPathname();
-            }
-        }
-
-        expect($requests)->not->toBeEmpty();
-
-        foreach ($requests as $file) {
-            expect(basename($file))->toEndWith('Request.php');
-        }
-    });
-
-    it('responses have Response suffix', function () {
-        $path = __DIR__.'/../src/Responses';
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS)
-        );
-
-        $responses = [];
-        foreach ($iterator as $file) {
-            if ($file->isFile() && $file->getExtension() === 'php') {
-                $responses[] = $file->getPathname();
-            }
-        }
-
-        expect($responses)->not->toBeEmpty();
-
-        foreach ($responses as $file) {
-            expect(basename($file))->toEndWith('Response.php');
-        }
-    });
-
-    it('objects are in Objects namespace', function () {
-        $objects = glob(__DIR__.'/../src/Objects/*.php');
-        expect($objects)->not->toBeEmpty();
-
-        foreach ($objects as $file) {
-            $class = 'PalPalani\\BayLinks\\Objects\\'.basename($file, '.php');
-            expect(class_exists($class) || interface_exists($class))->toBeTrue();
-        }
-    });
+    foreach ($requests as $file) {
+        expect(basename($file))->toEndWith('Request.php');
+    }
 });
 
-describe('Dependencies', function () {
-    it('factories extend Saloon Connector')
-        ->expect('PalPalani\BayLinks\Factory')
-        ->toExtend(Connector::class);
+test('responses have Response suffix', function () {
+    $path = __DIR__.'/../src/Responses';
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS)
+    );
 
-    it('resources extend base Resource')
-        ->expect('PalPalani\BayLinks\Resources\AccountResource')
-        ->toExtend(Resource::class)
-        ->and('PalPalani\BayLinks\Resources\CreateShortURLResource')
-        ->toExtend(Resource::class)
-        ->and('PalPalani\BayLinks\Resources\CreateBulkURLResource')
+    $responses = [];
+    foreach ($iterator as $file) {
+        if ($file->isFile() && $file->getExtension() === 'php') {
+            $responses[] = $file->getPathname();
+        }
+    }
+
+    expect(count($responses) > 0)->toBeTrue();
+
+    foreach ($responses as $file) {
+        expect(basename($file))->toEndWith('Response.php');
+    }
+});
+
+test('objects are in Objects namespace', function () {
+    $objects = glob(__DIR__.'/../src/Objects/*.php');
+    expect(count($objects) > 0)->toBeTrue();
+
+    foreach ($objects as $file) {
+        $class = 'PalPalani\\BayLinks\\Objects\\'.basename($file, '.php');
+        expect(class_exists($class) || interface_exists($class))->toBeTrue();
+    }
+});
+
+// Dependencies
+test('factories extend Saloon Connector')
+    ->expect('PalPalani\BayLinks\Factory')
+    ->toExtend(Connector::class);
+
+test('resources extend base Resource', function () {
+    expect('PalPalani\BayLinks\Resources\AccountResource')
         ->toExtend(Resource::class);
-
-    it('requests extend Saloon Request')
-        ->expect('PalPalani\BayLinks\Requests')
-        ->toExtend(Request::class);
+    expect('PalPalani\BayLinks\Resources\CreateShortURLResource')
+        ->toExtend(Resource::class);
+    expect('PalPalani\BayLinks\Resources\CreateBulkURLResource')
+        ->toExtend(Resource::class);
 });
 
-describe('Code Quality', function () {
-    it('ensures classes are final where appropriate')
-        ->expect('PalPalani\BayLinks\BayLinks')
-        ->toBeFinal()
-        ->and('PalPalani\BayLinks\Factory')
-        ->toBeFinal();
+test('requests extend Saloon Request')
+    ->expect('PalPalani\BayLinks\Requests')
+    ->toExtend(Request::class);
 
-    it('globals are not accessed')
-        ->expect('PalPalani\BayLinks')
-        ->not->toUse(['$_GET', '$_POST', '$_REQUEST', '$_SESSION', '$_COOKIE', '$_SERVER']);
+// Code Quality
+test('ensures classes are final where appropriate', function () {
+    expect('PalPalani\BayLinks\BayLinks')->toBeFinal();
+    expect('PalPalani\BayLinks\Factory')->toBeFinal();
 });
+
+test('globals are not accessed')
+    ->expect('PalPalani\BayLinks')
+    ->not->toUse(['$_GET', '$_POST', '$_REQUEST', '$_SESSION', '$_COOKIE', '$_SERVER']);
