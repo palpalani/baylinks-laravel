@@ -2,14 +2,24 @@ name: PHPStan
 
 on:
   push:
+    branches: [main]
+    paths:
+      - '**.php'
+      - 'phpstan.neon.dist'
+  pull_request:
     paths:
       - '**.php'
       - 'phpstan.neon.dist'
 
+concurrency:
+  group: phpstan-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   phpstan:
-    name: phpstan
+    name: PHPStan Analysis
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v5
 
@@ -19,8 +29,19 @@ jobs:
           php-version: '8.4'
           coverage: none
 
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
       - name: Install composer dependencies
         uses: ramsey/composer-install@v3
 
       - name: Run PHPStan
-        run: ./vendor/bin/phpstan --error-format=github
+        run: ./vendor/bin/phpstan --error-format=github --no-progress
