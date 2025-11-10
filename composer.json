@@ -36,7 +36,7 @@
         "pestphp/pest-plugin-laravel": "^4.0.0",
         "pestphp/pest-plugin-type-coverage": "^4.0",
         "phpstan/extension-installer": "^1.4",
-        "phpstan/phpstan-deprecation-rules": "^1.0 || ^2.0",
+        "phpstan/phpstan-deprecation-rules": "^2.0.3",
         "phpstan/phpstan-phpunit": "^2.0.7"
     },
     "minimum-stability": "dev",
